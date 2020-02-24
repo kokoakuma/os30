@@ -2,3 +2,9 @@
 ##### tatsumack/30nichideosjisaku
 [URL](https://github.com/tatsumack/30nichideosjisaku)
 からcloneしてやってみる。
+
+naskでエラーが出るので、
+nasmをinstall
+makefile内のnask部分を
+```nasm helloos.nas -o helloos.img```
+に変更
