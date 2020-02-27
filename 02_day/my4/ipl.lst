@@ -1,0 +1,61 @@
+     1                                  ; hello-os
+     2                                  ; TAB=4
+     3                                  		ORG  0x7c00  ; このプログラムがどこに読み込まれるか
+     4                                  
+     5                                  ; ディスク記述
+     6                                  
+     7 00000000 EB4E                        JMP  entry
+     8 00000002 90                          DB   0x90
+     9 00000003 48454C4C4F49504C            DB   "HELLOIPL" ; ブーとセクタの名前
+    10 0000000B 0002                        DW   512        ; １セクタの大きさ
+    11 0000000D 01                          DB   1          ; クラスタの大きさ
+    12 0000000E 0100                        DW   1          ; fatの開始地点
+    13 00000010 02                          DB   2          ; fatの個数
+    14 00000011 E000                        DW   224        ; root directoryの大きさ
+    15 00000013 400B                        DW   2880       ; このドライブの大きさ
+    16 00000015 F0                          DB   0xf0       ; メディアのタイプ
+    17 00000016 0900                        DW   9          ; fatの長さ
+    18 00000018 1200                        DW   18         ; 1トラックにいくつのセクタがあるか
+    19 0000001A 0200                        DW   2          ; ヘッドの数
+    20 0000001C 00000000                    DD   0          ; パーティションの数
+    21 00000020 400B0000                    DD   2880       ; このドライブの大きさをもう一度書く
+    22 00000024 000029                      DB   0,0,0x29
+    23 00000027 FFFFFFFF                    DD   0xffffffff
+    24 0000002B 48454C4C4F2D4F5320-         DB   "HELLO-OS   "
+    24 00000034 2020               
+    25 00000036 4641543132202020            DB   "FAT12   "
+    26 0000003E <res 00000012>              RESB 18
+    26          ******************       warning: uninitialized space declared in .text section: zeroing [-w+other]
+    27                                  
+    28                                  entry:
+    29 00000050 B80000                    MOV AX,0
+    30 00000053 8ED0                      MOV SS,AX
+    31 00000055 BC007C                    MOV SP,0x7c00
+    32 00000058 8ED8                      MOV DS,AX
+    33 0000005A 8EC0                      MOV ES,AX
+    34                                  
+    35 0000005C BE[7400]                  MOV SI,msg
+    36                                  putloop:
+    37 0000005F 8A04                      MOV AL,[SI]
+    38 00000061 83C601                    ADD SI,1
+    39 00000064 3C00                      CMP AL,0
+    40 00000066 7409                      JE fin
+    41 00000068 B40E                      MOV AH,0x0e
+    42 0000006A BB0F00                    MOV BX,15
+    43 0000006D CD10                      INT 0x10
+    44 0000006F EBEE                      JMP putloop
+    45                                  fin:
+    46 00000071 F4                        HLT
+    47 00000072 EBFD                      JMP fin
+    48                                  
+    49                                  msg:
+    50 00000074 0A0A                      DB 0x0a, 0x0a
+    51 00000076 48454C4C4F2C20574F-       DB "HELLO, WORLD i am koki"
+    51 0000007F 524C44206920616D20-
+    51 00000088 6B6F6B69           
+    52 0000008C 0A                        DB 0x0a
+    53 0000008D 00                        DB 0
+    54                                  
+    55 0000008E <res 00000170>            RESB 0x1fe-($-$$)
+    55          ******************       warning: uninitialized space declared in .text section: zeroing [-w+other]
+    56 000001FE 55AA                      DB 0x55, 0xaa
