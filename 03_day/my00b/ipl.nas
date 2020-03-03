@@ -36,18 +36,27 @@ entry:
 
 ; �f�B�X�N��ǂ�
 
-		MOV   AX,0x0820
-		MOV   ES,AX
-		MOV   CH,0 ;シリンダ
-		MOV   DH,0 ;ヘッダ
-		MOV   CL,2 ;セクタ
+		MOV		AX,0x0820
+		MOV		ES,AX
+		MOV		CH,0			; �V�����_0
+		MOV		DH,0			; �w�b�h0
+		MOV		CL,2			; �Z�N�^2
 
-		MOV   AH,0x02
-		MOV   AL,1
-		MOV   BX,0
+		MOV		SI,0			; ���s�񐔂𐔂��郌�W�X�^
+retry:
+		MOV		AH,0x02			; AH=0x02 : �f�B�X�N�ǂݍ���
+		MOV		AL,1			; 1�Z�N�^
+		MOV		BX,0
+		MOV		DL,0x00			; A�h���C�u
+		INT		0x13			; �f�B�X�NBIOS�Ăяo��
+		JNC		fin				; �G���[�������Ȃ����fin��
+    ADD   SI,1
+		CMP   SI,5
+		JAE   error
+		MOV   AH,0x00
 		MOV   DL,0x00
-		INT   0x13 ;ディスク読み込み、return error 0 or 1
-		JC    error ; if error 1, jump
+		INT   0x13
+		JMP   retry
 
 ; �ǂݏI��������ǂƂ肠������邱�ƂȂ��̂ŐQ��
 

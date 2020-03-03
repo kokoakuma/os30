@@ -13,7 +13,6 @@ default :
 	$(MAKE) img
 
 # �t�@�C�������K��
-
 ipl.bin : ipl.nas Makefile
 	$(NASM) ipl.nas -o ipl.bin -l ipl.lst
 
