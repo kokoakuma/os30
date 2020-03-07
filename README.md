@@ -3,8 +3,14 @@
 https://blog.haramishio.xyz/entry/hariboteos
 
 ##### alias
-ubuntu64
-os30
+ubuntu64 
+os30 
+
+##### ubuntu
+vagrant up 
+vagrant ssh 
+exit 
+vagrant halt 
 
 catalinaで32bitアプリが動かせないのが原因？
 他のgccをインストールした所、動きそうだったが、/varのファイルでエラーが出た。。。
