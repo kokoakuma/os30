@@ -7,71 +7,67 @@ IMGTOL   = $(TOOLPATH)imgtol
 COPY     = cp
 DEL      = rm -f
 
-# ÉfÉtÉHÉãÉgìÆçÏ
+# ÔøΩfÔøΩtÔøΩHÔøΩÔøΩÔøΩgÔøΩÔøΩÔøΩÔøΩ
 
 default :
 	$(MAKE) haribote.img
 
-# ÉtÉ@ÉCÉãê∂ê¨ãKë•
+# ÔøΩtÔøΩ@ÔøΩCÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩKÔøΩÔøΩ
 
 haribote.img : haribote/ipl09.bin haribote/haribote.sys Makefile \
-		a/a.hrb hello3/hello3.hrb hello4/hello4.hrb hello5/hello5.hrb \
+		a/a.hrb hello3/hello3.hrb hello4/hello4.hrb \
 		winhelo/winhelo.hrb winhelo2/winhelo2.hrb winhelo3/winhelo3.hrb \
 		star1/star1.hrb stars/stars.hrb stars2/stars2.hrb \
 		lines/lines.hrb walk/walk.hrb noodle/noodle.hrb \
 		beepdown/beepdown.hrb color/color.hrb color2/color2.hrb \
 		sosu/sosu.hrb sosu2/sosu2.hrb sosu3/sosu3.hrb \
-		type/type.hrb iroha/iroha.hrb chklang/chklang.hrb \
-		notrec/notrec.hrb bball/bball.hrb invader/invader.hrb \
-		calc/calc.hrb tview/tview.hrb mmlplay/mmlplay.hrb gview/gview.hrb
-	$(EDIMG)   imgin:../../z_tools/fdimg0at.tek \
-		wbinimg src:haribote/ipl09.bin len:512 from:0 to:0 \
-		copy from:haribote/haribote.sys to:@: \
-		copy from:ipl09.nas to:@: \
-		copy from:make.bat to:@: \
-		copy from:a/a.hrb to:@: \
-		copy from:hello3/hello3.hrb to:@: \
-		copy from:hello4/hello4.hrb to:@: \
-		copy from:hello5/hello5.hrb to:@: \
-		copy from:winhelo/winhelo.hrb to:@: \
-		copy from:winhelo2/winhelo2.hrb to:@: \
-		copy from:winhelo3/winhelo3.hrb to:@: \
-		copy from:star1/star1.hrb to:@: \
-		copy from:stars/stars.hrb to:@: \
-		copy from:stars2/stars2.hrb to:@: \
-		copy from:lines/lines.hrb to:@: \
-		copy from:walk/walk.hrb to:@: \
-		copy from:noodle/noodle.hrb to:@: \
-		copy from:beepdown/beepdown.hrb to:@: \
-		copy from:color/color.hrb to:@: \
-		copy from:color2/color2.hrb to:@: \
-		copy from:sosu/sosu.hrb to:@: \
-		copy from:sosu2/sosu2.hrb to:@: \
-		copy from:sosu3/sosu3.hrb to:@: \
-		copy from:type/type.hrb to:@: \
-		copy from:iroha/iroha.hrb to:@: \
-		copy from:chklang/chklang.hrb to:@: \
-		copy from:euc.txt to:@: \
-		copy from:notrec/notrec.hrb to:@: \
-		copy from:bball/bball.hrb to:@: \
-		copy from:invader/invader.hrb to:@: \
-		copy from:calc/calc.hrb to:@: \
-		copy from:tview/tview.hrb to:@: \
-		copy from:mmlplay/mmlplay.hrb to:@: \
-		copy from:mmldata/kirakira.mml to:@: \
-		copy from:mmldata/fujisan.mml to:@: \
-		copy from:mmldata/daigo.mml to:@: \
-		copy from:mmldata/daiku.mml to:@: \
-		copy from:gview/gview.hrb to:@: \
-		copy from:pictdata/fujisan.jpg to:@: \
-		copy from:pictdata/night.bmp to:@: \
-		copy from:nihongo/nihongo.fnt to:@: \
-		imgout:haribote.img
+		cat/cat.hrb iroha/iroha.hrb \
+		chklang/chklang.hrb notrec/notrec.hrb bball/bball.hrb \
+		invader/invader.hrb calc/calc.hrb tview/tview.hrb \
+		gview/gview.hrb
+		mformat -f 1440 -C -B haribote/ipl09.bin -i haribote.img ::
+		mcopy haribote/haribote.sys -i haribote.img ::
+		mcopy haribote/ipl09.nas -i haribote.img ::
+	  mcopy a/a.hrb -i haribote.img ::
+	  mcopy hello3/hello3.hrb -i haribote.img ::
+	  mcopy hello4/hello4.hrb -i haribote.img ::
+	  mcopy winhelo/winhelo.hrb -i haribote.img ::
+	  mcopy winhelo2/winhelo2.hrb -i haribote.img ::
+	  mcopy winhelo3/winhelo3.hrb -i haribote.img ::
+	  mcopy star1/star1.hrb -i haribote.img ::
+	  mcopy stars/stars.hrb -i haribote.img ::
+	  mcopy stars2/stars2.hrb -i haribote.img ::
+	  mcopy lines/lines.hrb -i haribote.img ::
+	  mcopy walk/walk.hrb -i haribote.img ::
+	  mcopy noodle/noodle.hrb -i haribote.img ::
+	  mcopy beepdown/beepdown.hrb -i haribote.img ::
+	  mcopy color/color.hrb -i haribote.img ::
+	  mcopy color2/color2.hrb -i haribote.img ::
+	  mcopy sosu/sosu.hrb -i haribote.img ::
+	  mcopy sosu2/sosu2.hrb -i haribote.img ::
+	  mcopy sosu3/sosu3.hrb -i haribote.img ::
+	  mcopy cat/cat.hrb -i haribote.img ::
+	  mcopy iroha/iroha.hrb -i haribote.img ::
+	  mcopy chklang/chklang.hrb -i haribote.img ::
+	  mcopy notrec/notrec.hrb -i haribote.img ::
+	  mcopy bball/bball.hrb -i haribote.img ::
+	  mcopy invader/invader.hrb -i haribote.img ::
+	  mcopy calc/calc.hrb -i haribote.img ::
+	  mcopy tview/tview.hrb -i haribote.img ::
+	  mcopy gview/gview.hrb -i haribote.img ::
+	  mcopy pictdata/fujisan.jpg -i haribote.img ::
+	  mcopy pictdata/night.bmp -i haribote.img ::
+	  mcopy nihongo/nihongo.fnt -i haribote.img ::
+	  mcopy test.txt -i haribote.img ::
 
-# ÉRÉ}ÉìÉh
+# ÔøΩRÔøΩ}ÔøΩÔøΩÔøΩh
 
 run :
 	$(MAKE) haribote.img
+	$(COPY) haribote.img ../../z_tools/qemu/fdimage0.bin
+	$(MAKE) -C ../../z_tools/qemu
+
+run_only :
 	$(COPY) haribote.img ../../z_tools/qemu/fdimage0.bin
 	$(MAKE) -C ../../z_tools/qemu
 
@@ -127,7 +123,7 @@ run_os :
 	$(MAKE) run
 
 clean :
-# âΩÇ‡ÇµÇ»Ç¢
+# ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ»ÇÔøΩ
 
 src_only :
 	$(MAKE) clean
