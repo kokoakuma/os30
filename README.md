@@ -2,6 +2,10 @@
 #### 参考↓
 https://blog.haramishio.xyz/entry/hariboteos
 
+##### alias
+ubuntu64
+os30
+
 catalinaで32bitアプリが動かせないのが原因？
 他のgccをインストールした所、動きそうだったが、/varのファイルでエラーが出た。。。
 # 『30日でできる！ OS自作入門』 for macOS
