@@ -67,6 +67,10 @@ run :
 	$(COPY) haribote.img ../../z_tools/qemu/fdimage0.bin
 	$(MAKE) -C ../../z_tools/qemu
 
+run_only:
+	$(COPY) haribote.img ../../z_tools/qemu/fdimage0.bin
+	$(MAKE) -C ../../z_tools/qemu
+
 run_only :
 	$(COPY) haribote.img ../../z_tools/qemu/fdimage0.bin
 	$(MAKE) -C ../../z_tools/qemu
