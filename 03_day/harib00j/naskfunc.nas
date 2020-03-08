@@ -1,21 +1,15 @@
 ; naskfunc
 ; TAB=4
 
-[FORMAT "WCOFF"]				; オブジェクトファイルを作るモード	
-[BITS 32]						; 32ビットモード用の機械語を作らせる
+[FORMAT "WCOFF"]
+[BITS 32]
 
+[FILE "naskfunc.nas"]
 
-; オブジェクトファイルのための情報
+  GLOBAL _io_hlt
 
-[FILE "naskfunc.nas"]			; ソースファイル名情報
+[SECTION .text]
 
-		GLOBAL	_io_hlt			; このプログラムに含まれる関数名
-
-
-; 以下は実際の関数
-
-[SECTION .text]		; オブジェクトファイルではこれを書いてからプログラムを書く
-
-_io_hlt:	; void io_hlt(void);
-		HLT
-		RET
+_io_hlt:
+  HLT
+	RET
