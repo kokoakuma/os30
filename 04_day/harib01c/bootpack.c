@@ -2,15 +2,16 @@ void io_hlt(void);
 
 void HariMain(void)
 {
-	int i; /* •Ï”éŒ¾Bi‚Æ‚¢‚¤•Ï”‚ÍA32ƒrƒbƒg‚Ì®”Œ^ */
-	char *p; /* p‚Æ‚¢‚¤•Ï”‚ÍABYTE [...]—p‚Ì”Ô’n */
+	int i; /* ï¿½Ïï¿½ï¿½éŒ¾ï¿½Biï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Ïï¿½ï¿½ÍA32ï¿½rï¿½bï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½^ */
+	char *p;
+//	char *p; /* pï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Ïï¿½ï¿½ÍABYTE [...]ï¿½pï¿½Ì”Ô’n */
 
 	for (i = 0xa0000; i <= 0xaffff; i++) {
 
-		p = i; /* ”Ô’n‚ð‘ã“ü */
+		p = (char *) i;
 		*p = i & 0x0f;
 
-		/* ‚±‚ê‚Å write_mem8(i, i & 0x0f); ‚Ì‘ã‚í‚è‚É‚È‚é */
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½ write_mem8(i, i & 0x0f); ï¿½Ì‘ï¿½ï¿½ï¿½É‚È‚ï¿½ */
 	}
 
 	for (;;) {

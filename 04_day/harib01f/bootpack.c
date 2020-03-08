@@ -4,20 +4,20 @@ void io_out8(int port, int data);
 int io_load_eflags(void);
 void io_store_eflags(int eflags);
 
-/* À‚Í“¯‚¶ƒ\[ƒXƒtƒ@ƒCƒ‹‚É‘‚¢‚Ä‚ ‚Á‚Ä‚àA’è‹`‚·‚é‘O‚Ég‚¤‚Ì‚È‚çA
-	‚â‚Á‚Ï‚èéŒ¾‚µ‚Ä‚¨‚©‚È‚¢‚Æ‚¢‚¯‚È‚¢B */
+/* ï¿½ï¿½ï¿½Í“ï¿½ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Aï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½Oï¿½Égï¿½ï¿½ï¿½Ì‚È‚ï¿½A
+	ï¿½ï¿½ï¿½ï¿½Ï‚ï¿½éŒ¾ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½B */
 
 void init_palette(void);
 void set_palette(int start, int end, unsigned char *rgb);
 
 void HariMain(void)
 {
-	int i; /* •Ï”éŒ¾Bi‚Æ‚¢‚¤•Ï”‚ÍA32ƒrƒbƒg‚Ì®”Œ^ */
-	char *p; /* p‚Æ‚¢‚¤•Ï”‚ÍABYTE [...]—p‚Ì”Ô’n */
+	int i; /* ï¿½Ïï¿½ï¿½éŒ¾ï¿½Biï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Ïï¿½ï¿½ÍA32ï¿½rï¿½bï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½^ */
+	char *p; /* pï¿½Æ‚ï¿½ï¿½ï¿½ï¿½Ïï¿½ï¿½ÍABYTE [...]ï¿½pï¿½Ì”Ô’n */
 
-	init_palette(); /* ƒpƒŒƒbƒg‚ğİ’è */
+	init_palette(); /* ï¿½pï¿½ï¿½ï¿½bï¿½gï¿½ï¿½İ’ï¿½ */
 
-	p = (char *) 0xa0000; /* ”Ô’n‚ğ‘ã“ü */
+	p = (char *) 0xa0000; /* ï¿½Ô’nï¿½ï¿½ï¿½ï¿½ */
 
 	for (i = 0; i <= 0xffff; i++) {
 		p[i] = i & 0x0f;
@@ -31,34 +31,34 @@ void HariMain(void)
 void init_palette(void)
 {
 	static unsigned char table_rgb[16 * 3] = {
-		0x00, 0x00, 0x00,	/*  0:• */
-		0xff, 0x00, 0x00,	/*  1:–¾‚é‚¢Ô */
-		0x00, 0xff, 0x00,	/*  2:–¾‚é‚¢—Î */
-		0xff, 0xff, 0x00,	/*  3:–¾‚é‚¢‰©F */
-		0x00, 0x00, 0xff,	/*  4:–¾‚é‚¢Â */
-		0xff, 0x00, 0xff,	/*  5:–¾‚é‚¢‡ */
-		0x00, 0xff, 0xff,	/*  6:–¾‚é‚¢…F */
-		0xff, 0xff, 0xff,	/*  7:”’ */
-		0xc6, 0xc6, 0xc6,	/*  8:–¾‚é‚¢ŠDF */
-		0x84, 0x00, 0x00,	/*  9:ˆÃ‚¢Ô */
-		0x00, 0x84, 0x00,	/* 10:ˆÃ‚¢—Î */
-		0x84, 0x84, 0x00,	/* 11:ˆÃ‚¢‰©F */
-		0x00, 0x00, 0x84,	/* 12:ˆÃ‚¢Â */
-		0x84, 0x00, 0x84,	/* 13:ˆÃ‚¢‡ */
-		0x00, 0x84, 0x84,	/* 14:ˆÃ‚¢…F */
-		0x84, 0x84, 0x84	/* 15:ˆÃ‚¢ŠDF */
+		0x00, 0x00, 0x00,
+		0xff, 0x00, 0x00,
+		0x00, 0xff, 0x00,
+		0xff, 0xff, 0x00,
+		0x00, 0x00, 0xff,
+		0xff, 0x00, 0xff,
+		0x00, 0xff, 0xff,
+		0xff, 0xff, 0xff,
+		0xc6, 0xc6, 0xc6,
+		0x84, 0x00, 0x00,
+		0x00, 0x84, 0x00,
+		0x84, 0x84, 0x00,
+		0x00, 0x00, 0x84,
+		0x84, 0x00, 0x84,
+		0x00, 0x84, 0x84,
+		0x84, 0x84, 0x84
 	};
 	set_palette(0, 15, table_rgb);
 	return;
 
-	/* static char –½—ß‚ÍAƒf[ƒ^‚É‚µ‚©g‚¦‚È‚¢‚¯‚ÇDB–½—ß‘Š“– */
+	/* static char ï¿½ï¿½ï¿½ß‚ÍAï¿½fï¿½[ï¿½^ï¿½É‚ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ï¿½DBï¿½ï¿½ï¿½ß‘ï¿½ï¿½ï¿½ */
 }
 
 void set_palette(int start, int end, unsigned char *rgb)
 {
 	int i, eflags;
-	eflags = io_load_eflags();	/* Š„‚è‚İ‹–‰Âƒtƒ‰ƒO‚Ì’l‚ğ‹L˜^‚·‚é */
-	io_cli(); 					/* ‹–‰Âƒtƒ‰ƒO‚ğ0‚É‚µ‚ÄŠ„‚è‚İ‹Ö~‚É‚·‚é */
+	eflags = io_load_eflags();	/* ï¿½ï¿½ï¿½èï¿½İ‹ï¿½ï¿½Âƒtï¿½ï¿½ï¿½Oï¿½Ì’lï¿½ï¿½ï¿½Lï¿½^ï¿½ï¿½ï¿½ï¿½ */
+	io_cli(); 					/* ï¿½ï¿½ï¿½Âƒtï¿½ï¿½ï¿½Oï¿½ï¿½0ï¿½É‚ï¿½ï¿½ÄŠï¿½ï¿½èï¿½İ‹Ö~ï¿½É‚ï¿½ï¿½ï¿½ */
 	io_out8(0x03c8, start);
 	for (i = start; i <= end; i++) {
 		io_out8(0x03c9, rgb[0] / 4);
@@ -66,6 +66,6 @@ void set_palette(int start, int end, unsigned char *rgb)
 		io_out8(0x03c9, rgb[2] / 4);
 		rgb += 3;
 	}
-	io_store_eflags(eflags);	/* Š„‚è‚İ‹–‰Âƒtƒ‰ƒO‚ğŒ³‚É–ß‚· */
+	io_store_eflags(eflags);	/* ï¿½ï¿½ï¿½èï¿½İ‹ï¿½ï¿½Âƒtï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½ï¿½ï¿½É–ß‚ï¿½ */
 	return;
 }
